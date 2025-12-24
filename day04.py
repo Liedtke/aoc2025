@@ -16,4 +16,14 @@ for y, line in enumerate(grid):
         if c == "@":
             res_a += int(movable(y, x))
 
-print(res_a)
+print(f"a = {res_a}")
+
+changed = True
+while changed:
+    changed = False
+    for y, line in enumerate(grid):
+        for x, c in enumerate(line):
+            if c == "@" and movable(y, x):
+                grid[y] = line[:x] + "-" + line[x+1:]
+                changed = True
+print(f"b = {sum(line.count("-") for line in grid)}")
