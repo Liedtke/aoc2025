@@ -23,3 +23,4 @@ def fresh(item):
     return l <= item <= h
 
 print(f"a = {sum(1 if fresh(item) else 0 for item in items)}")
+print(f"b = {sum(r[1] - r[0] + 1 for r in merged_ranges)}")
