@@ -4,18 +4,15 @@ ranges, items = open("inputs/day05.txt").read().split("\n\n")
 items = [int(item) for item in items.split("\n")]
 ranges = [[int(n) for n in r.split("-")] for r in ranges.split("\n")]
 ranges.sort()
-# Merge all overlapping
+# Merge all overlapping ranges.
 merged_ranges = []
 current = ranges[0]
-i = 1
-while i < len(ranges):
-    r = ranges[i]
+for i, r in enumerate(ranges):
     if r[0] > current[1] + 1:
         merged_ranges.append(tuple(current))
         current = r
     else:
         current[1] = max(current[1], r[1])
-    i += 1
 merged_ranges.append(tuple(current))
 
 def fresh(item):
